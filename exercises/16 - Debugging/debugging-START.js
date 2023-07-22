@@ -29,7 +29,6 @@ function doctorize(name) {
 }
 
 function greet(name) {
-  doesntExist();
   return `Hello ${name}`;
 }
 
@@ -39,7 +38,7 @@ function go() {
 }
 
 const button = document.querySelector('.bigger');
-button.addEventListener('click', function(e) {
+button.addEventListener('click', (e) => {
   const newFontSize =
     parseFloat(getComputedStyle(e.currentTarget).fontSize) + 1;
   e.currentTarget.style.fontSize = `${newFontSize}px`;

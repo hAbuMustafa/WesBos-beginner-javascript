@@ -167,7 +167,11 @@
       console.log(orderTotals.sort((a, b) => b - a));
 
       // Sort the prices with sort()
-      console.log(Object.values(prices).sort());
+      console.log(
+        Object.entries(prices).sort(([_, aPrice], [__, bPrice]) => bPrice - aPrice)
+        // simpler form whould be:
+        // .sort((a, b) => b[1] - a[1])
+      );
 
       /*
         Looping Methods (next)

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async-await, Promises, & event loop Practice</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+        background-color: lightskyblue;
+
+        > p {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #fff;
+          color: maroon;
+          width: 10rem;
+          height: 10rem;
+          font-size: xx-large;
+          transition: all 0.25s;
+        }
+      }
+
+      p.circle {
+        border-radius: 50%;
+      }
+
+      p.red {
+        background-color: red;
+      }
+
+      p.purple {
+        background-color: purple;
+      }
+
+      p.fade {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <p><abbr title="with middle mouse button">Click Me</abbr>!</p>
+
+    <script>
+      const $ = document.querySelector.bind(document);
+      const p = $('p');
+      const wait = (ms = 0) =>
+        new Promise((resolve) => {
+          setTimeout(resolve, ms);
+        });
+
+      p.addEventListener('mousedown', (e) => {
+        if (e.button !== 1) return;
+        const elem = e.currentTarget;
+        // 1. Change the text to GO when clicked.
+        elem.textContent = 'Go!';
+
+        /* Uncomment one method of the following: */
+        // usingTimeout(elem);
+        // usingPromiseChaining(elem);
+        usingAsyncAwait(elem);
+      });
+
+      function usingTimeout(elem) {
+        // 2. Make it a circle after 2 seconds
+        setTimeout(() => {
+          elem.classList.add('circle');
+
+          // 3. Make it red after 0.5s
+          setTimeout(() => {
+            elem.classList.add('red');
+
+            // 4. make it square after 0.25s
+            // 5. make it purple
+            setTimeout(() => {
+              elem.classList.add('purple');
+              elem.classList.remove('circle');
+
+              // 6. fade out after 0.5s
+              setTimeout(() => {
+                elem.classList.add('fade');
+              }, 500);
+            }, 250);
+          }, 500);
+        }, 2000);
+      }
+
+      function usingPromiseChaining(elem) {
+        wait(2000)
+          .then(() => {
+            // 2. Make it a circle after 2 seconds
+            elem.classList.add('circle');
+            return wait(500);
+          })
+          .then(() => {
+            // 3. Make it red after 0.5s
+            elem.classList.add('red');
+            return wait(250);
+          })
+          .then(() => {
+            // 4. make it square after 0.25s
+            // 5. make it purple
+            elem.classList.remove('circle');
+            elem.classList.add('purple');
+            return wait(500);
+          })
+          .then(() => {
+            // 6. fade out after 0.5s
+            elem.classList.add('fade');
+          });
+      }
+
+      async function usingAsyncAwait(elem) {
+        // 2. Make it a circle after 2 seconds
+        await wait(2000);
+        elem.classList.add('circle');
+
+        // 3. Make it red after 0.5s
+        await wait(500);
+        elem.classList.add('red');
+
+        // 4. make it square after 0.25s
+        // 5. make it purple
+        await wait(250);
+        elem.classList.remove('circle');
+        elem.classList.add('purple');
+
+        // 6. fade out after 0.5s
+        await wait(500);
+        elem.classList.add('fade');
+      }
+    </script>
+  </body>
+</html>

@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Recipe Fetcher</title>
+    <link rel="stylesheet" href="../../base.css" />
+    <style>
+      .search {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Recipe Fetcher</title>
-  <link rel="stylesheet" href="../../base.css">
-  <style>
-    .search {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-  </style>
-</head>
+      button[disabled] {
+        opacity: 0.2;
+      }
 
-<body>
-  <div class="wrapper">
-    <form class="search" autocomplete="off">
-      <input type="text" name="query">
-      <button name="submit" type="submit">Submit</button>
-    </form>
-    <div class="recipes"></div>
-  </div>
+      .recipes {
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+      }
 
-  <script src="./scripts.js"></script>
-</body>
+      .recipe {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 20px;
 
+        & img {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <form class="search" autocomplete="off">
+        <input type="text" name="query" value="garlic" />
+        <button name="submit" type="submit">Submit</button>
+      </form>
+      <div class="recipes"></div>
+    </div>
+
+    <script src="./scripts.js"></script>
+  </body>
 </html>

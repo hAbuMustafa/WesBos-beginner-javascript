@@ -17,8 +17,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "cssnano": "^6.0.1",
     "eslint": "^8.0.0",
     "eslint-config-wesbos": "^3.2.3",
+    "postcss": "^8.4.27",
     "prettier": "^2.7.1",
     "typescript": "^4.8.4"
   }

@@ -20,7 +20,7 @@ h1 {
 
 .colors span {
   color: rgba(0, 0, 0, 0.4);
-  flex:1;
+  flex: 1;
   padding: 1rem;
   font-weight: 900;
 }
@@ -41,5 +41,6 @@ h1 {
 
 .colors span.got {
   text-decoration: line-through;
+  opacity: 0.1;
   animation: jump 0.2s ease-in-out 2 alternate-reverse;
 }

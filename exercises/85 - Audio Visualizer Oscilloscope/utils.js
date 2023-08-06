@@ -24,3 +24,10 @@ export function hslToRgb(h, s, l) {
 
   return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
+
+export const $ = document.querySelector.bind(document);
+export const $$ = document.querySelectorAll.bind(document);
+export const $$$ = (selector) => Array.from($$(selector));
+export function on(element, event, callback, options = undefined) {
+  element.addEventListener(event, callback, options);
+}

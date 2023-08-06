@@ -1,16 +1,16 @@
-import { hslToRgb } from "./utils";
+import { hslToRgb } from './utils';
 
 const WIDTH = 1500;
 const HEIGHT = 1500;
-const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
 let analyzer;
 let bufferLength;
 
 function handleError(err) {
-  console.log("You must give access to your mic in order to proceed");
+  console.log('You must give access to your mic in order to proceed');
 }
 
 async function getAudio() {
@@ -40,7 +40,7 @@ function drawTimeData(timeData) {
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
   // 2. setup some canvas drawing
   ctx.lineWidth = 10;
-  ctx.strokeStyle = "#ffc600";
+  ctx.strokeStyle = '#ffc600';
   ctx.beginPath();
   const sliceWidth = WIDTH / bufferLength;
   let x = 0;
